@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singer Portfolio</title>
+</head>
+<style>
+    /* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Header */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 25px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #ff4c60;
+}
+
+/* Burger Menu */
+.burger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Burger animation toggle */
+.burger.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.toggle .line2 {
+  opacity: 0;
+}
+
+.burger.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.4); /* makes video darker / subtle */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3); /* extra subtle layer */
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.hero .btn {
+  background: #ff4c60;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.hero .btn:hover {
+  background: #ff1f3b;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    top: 0;
+    background: rgba(0,0,0,0.95);
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    padding-top: 100px;
+  }
+
+  nav ul li {
+    margin: 20px 0;
+  }
+
+  nav ul.active {
+    transform: translateX(0);
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+/* About Section */
+.about {
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f8f8f8;
+}
+
+.about .container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  gap: 40px;
+}
+
+.about-left, .about-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-photo {
+  width: 100%;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+}
+
+.about-photo:hover {
+  transform: scale(1.05);
+}
+
+/* Counters */
+.counters {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.counter h3 {
+  font-size: 2rem;
+  color: #ff4c60;
+}
+
+.counter p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .counters {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+
+/* Music Section */
+.music {
+  padding: 100px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+/* Slider */
+.music-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+
+.album {
+  min-width: 250px;
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 20px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.album:hover {
+  transform: translateY(-10px);
+}
+
+.album-cover {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.album-cover:hover img {
+  transform: scale(1.1);
+}
+
+/* Tracklist overlay on hover */
+.tracklist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.album-cover:hover .tracklist {
+  opacity: 1;
+}
+
+.tracklist ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tracklist li {
+  margin-bottom: 10px;
+}
+
+.album h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.album audio {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.album .btn {
+  display: inline-block;
+  background: #ff4c60;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.album .btn:hover {
+  background: #ff1f3b;
+}
+
+/* Slider nav */
+.slider-nav {
+  margin-top: 20px;
+}
+
+.slider-nav button {
+  background: #ff4c60;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 10px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider-nav button:hover {
+  background: #ff1f3b;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .music-slider {
+    gap: 20px;
+  }
+}
+
+
+
+
+/* Video Section */
+.videos {
+  padding: 100px 20px;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.videos .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Filters */
+.video-filters {
+  margin-bottom: 30px;
+}
+
+.filter-btn {
+  background: #fff;
+  color: #333;
+  padding: 8px 20px;
+  margin: 0 10px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #ff4c60;
+  color: #fff;
+  border-color: #ff4c60;
+}
+
+/* Video Slider */
+.video-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+
+.video-item {
+  min-width: 300px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 200px;
+}
+
+.video-item:hover {
+  transform: scale(1.05);
+}
+
+/* Slider nav */
+#video-prev, #video-next {
+  background: #ff4c60;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#video-prev:hover, #video-next:hover {
+  background: #ff1f3b;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .video-slider {
+    gap: 15px;
+  }
+  .video-item iframe {
+    height: 180px;
+  }
+}
+
+
+
+/* Gallery Section */
+.gallery {
+  padding: 100px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.gallery .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+/* Masonry layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease, opacity 1s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #ff4c60;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .lightbox-content {
+    width: 95%;
+  }
+}
+
+
+
+
+/* Testimonials Section */
+.testimonials {
+  padding: 100px 20px;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+.testimonials .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+/* Slider */
+.testimonial-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+
+.testimonial {
+  min-width: 300px;
+  flex-shrink: 0;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-10px);
+}
+
+.testimonial p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.testimonial h4 {
+  font-size: 1.1rem;
+  color: #ff4c60;
+  margin-bottom: 10px;
+}
+
+.stars {
+  color: #FFD700; /* Gold stars */
+  font-size: 1.2rem;
+}
+
+/* Slider nav */
+#test-prev, #test-next {
+  background: #ff4c60;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 10px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#test-prev:hover, #test-next:hover {
+  background: #ff1f3b;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .testimonial-slider {
+    gap: 20px;
+  }
+}
+
+
+
+
+/* Contact Section */
+.contact {
+  padding: 100px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.contact .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+form {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+form input, form textarea {
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+form input:focus, form textarea:focus {
+  border-color: #ff4c60;
+  box-shadow: 0 0 10px rgba(255,76,96,0.3);
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.btn-submit {
+  background: #ff4c60;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.btn-submit.success {
+  background: #28a745;
+}
+
+.btn-submit.success::after {
+  content: '✔';
+  position: absolute;
+  right: 15px;
+  font-size: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.contact-info {
+  max-width: 300px;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.contact-info a {
+  color: #ff4c60;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.social-icons a img {
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .contact-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-info {
+    text-align: center;
+  }
+}
+
+
+
+
+/* Footer Section */
+.footer {
+  padding: 60px 20px;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.footer-social a img {
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.3) rotate(10deg);
+  filter: brightness(1.5);
+}
+
+/* Newsletter */
+.newsletter h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.newsletter input {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  min-width: 250px;
+}
+
+.newsletter button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ff4c60;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.newsletter button:hover {
+  background: #ff1f3b;
+}
+
+.newsletter-msg {
+  margin-top: 10px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Copyright */
+.footer .copyright {
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .newsletter form {
+    flex-direction: column;
+  }
+  .newsletter input, .newsletter button {
+    width: 100%;
+  }
+}
+
+</style>
+<body>
+
+<!-- Header / Navbar -->
+<header>
+  <div class="container">
+    <div class="logo">
+      <a href="#">Shadab ur Rehman</a>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </div>
+</header>
+<!-- Hero Section with Background Video -->
+<section id="home" class="hero">
+  <video autoplay muted loop class="hero-video">
+    <source src="VID-20250814-WA0006.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- Overlay to make video subtle -->
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Shadab ur <span style="color: #ff1f3b;">Rehman</span></h1>
+    <p>Vocalist | Performer | Songwriter</p>
+    <a href="#music" class="btn">Listen Now</a>
+  </div>
+</section>
+
+
+
+<!-- About Me Section -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-left fade-in">
+      <img src="ea6c5c69-f1fc-4a14-b7e1-421838049c4a.jfif" alt="Your Name" class="about-photo">
+    </div>
+    <div class="about-right fade-in">
+      <h2>About Me</h2>
+      <p>
+        I’m Shadab ur Rehman — a vocalist rooted in soulful melodies. 
+        My music blends classical depth with modern emotion, 
+        creating soundscapes that speak from the heart.
+      </p>
+      <p>
+        With experience performing at live gigs, cultural events, 
+        and music gatherings, I’ve connected with diverse audiences 
+        through raw vocals and heartfelt lyrics.
+      </p>
+
+      <!-- Counters -->
+      <div class="counters">
+        <div class="counter">
+          <h3 class="count" data-target="15">0</h3>
+          <p>Albums</p>
+        </div>
+        <div class="counter">
+          <h3 class="count" data-target="120">0</h3>
+          <p>Concerts</p>
+        </div>
+        <div class="counter">
+          <h3 class="count" data-target="10">0</h3>
+          <p>Awards</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Music / Discography Section -->
+<section id="music" class="music">
+  <div class="container">
+    <h2 class="section-title fade-in">My Music</h2>
+    <div class="music-slider fade-in">
+      <!-- Album 1 -->
+      <div class="album">
+        <div class="album-cover">
+          <img src="6f2b9edd-6100-43f3-9d3a-b1c96fe9be06.jfif" alt="Album 1">
+          <div class="tracklist">
+            <ul>
+              <li>Track 1</li>
+              <li>Track 2</li>
+              <li>Track 3</li>
+            </ul>
+          </div>
+        </div>
+        <h3> 1</h3>
+        <audio controls>
+          <source src="song1.mp3" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+        <a href="#" class="btn">Listen Now</a>
+      </div>
+
+      <!-- Album 2 -->
+      <div class="album">
+        <div class="album-cover">
+          <img src="404a5862-53d9-44ee-9f52-f3560877caf5.jfif" alt="Album 2">
+          <div class="tracklist">
+            <ul>
+              <li>Track 1</li>
+              <li>Track 2</li>
+              <li>Track 3</li>
+            </ul>
+          </div>
+        </div>
+        <h3> 2</h3>
+        <audio controls>
+          <source src="song2.mp3" type="audio/mp3">
+        </audio>
+        <a href="#" class="btn">Listen Now</a>
+      </div>
+        <!-- Album 2 -->
+      <div class="album">
+        <div class="album-cover">
+          <img src="404a5862-53d9-44ee-9f52-f3560877caf5.jfif" alt="Album 2">
+          <div class="tracklist">
+            <ul>
+              <li>Track 1</li>
+              <li>Track 2</li>
+              <li>Track 3</li>
+            </ul>
+          </div>
+        </div>
+        <h3> 2</h3>
+        <audio controls>
+          <source src="song2.mp3" type="audio/mp3">
+        </audio>
+        <a href="#" class="btn">Listen Now</a>
+      </div>
+  <!-- Album 2 -->
+      <div class="album">
+        <div class="album-cover">
+          <img src="404a5862-53d9-44ee-9f52-f3560877caf5.jfif" alt="Album 2">
+          <div class="tracklist">
+            <ul>
+              <li>Track 1</li>
+              <li>Track 2</li>
+              <li>Track 3</li>
+            </ul>
+          </div>
+        </div>
+        <h3> 2</h3>
+        <audio controls>
+          <source src="song2.mp3" type="audio/mp3">
+        </audio>
+        <a href="#" class="btn">Listen Now</a>
+      </div>
+  <!-- Album 2 -->
+      <div class="album">
+        <div class="album-cover">
+          <img src="404a5862-53d9-44ee-9f52-f3560877caf5.jfif" alt="Album 2">
+          <div class="tracklist">
+            <ul>
+              <li>Track 1</li>
+              <li>Track 2</li>
+              <li>Track 3</li>
+            </ul>
+          </div>
+        </div>
+        <h3> 2</h3>
+        <audio controls>
+          <source src="song2.mp3" type="audio/mp3">
+        </audio>
+        <a href="#" class="btn">Listen Now</a>
+      </div>
+  <!-- Album 2 -->
+      <div class="album">
+        <div class="album-cover">
+          <img src="404a5862-53d9-44ee-9f52-f3560877caf5.jfif" alt="Album 2">
+          <div class="tracklist">
+            <ul>
+              <li>Track 1</li>
+              <li>Track 2</li>
+              <li>Track 3</li>
+            </ul>
+          </div>
+        </div>
+        <h3> 2</h3>
+        <audio controls>
+          <source src="song2.mp3" type="audio/mp3">
+        </audio>
+        <a href="#" class="btn">Listen Now</a>
+      </div>
+
+
+      <!-- Add more albums as needed -->
+    </div>
+    
+    <!-- Slider navigation -->
+    <div class="slider-nav">
+      <button id="prev">&#10094;</button>
+      <button id="next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Video / Live Performances Section -->
+<section id="videos" class="videos">
+  <div class="container">
+    <h2 class="section-title fade-in">Performances</h2>
+
+    <!-- Filter buttons -->
+    <div class="video-filters fade-in">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="live">Live</button>
+      <button class="filter-btn" data-filter="studio">Studio</button>
+      <button class="filter-btn" data-filter="official">Official</button>
+    </div>
+
+    <!-- Video slider -->
+    <div class="video-slider fade-in">
+      <!-- Video 1 -->
+      <div class="video-item" data-category="live">
+        <iframe src="VID-20250813-WA0007.mp4" 
+                title="Live Performance 1" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!-- Video 2 -->
+      <div class="video-item" data-category="studio">
+        <iframe src="VID-20250814-WA0006.mp4" 
+                title="Studio Recording" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!-- Video 3 -->
+      <div class="video-item" data-category="official">
+        <iframe src="VID-20250814-WA0005.mp4" 
+                title="Official Video" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+        <!-- Video 3 -->
+      <div class="video-item" data-category="official">
+        <iframe src="VID-20250814-WA0004.mp4" 
+                title="Official Video" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+        <!-- Video 3 -->
+      <div class="video-item" data-category="official">
+        <iframe src="VID-20250814-WA0005.mp4" 
+                title="Official Video" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+        <!-- Video 3 -->
+      <div class="video-item" data-category="official">
+        <iframe src="VID-20250814-WA0005.mp4" 
+                title="Official Video" 
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!-- Add more videos as needed -->
+    </div>
+
+    <!-- Slider navigation -->
+    <div class="slider-nav">
+      <button id="video-prev">&#10094;</button>
+      <button id="video-next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Gallery / Photo Section -->
+<section id="gallery" class="gallery">
+  <div class="container">
+    <h2 class="section-title fade-in">Photo Gallery</h2>
+    <div class="gallery-grid fade-in">
+      <!-- Photo 1 -->
+      <div class="gallery-item">
+        <img src="6f2b9edd-6100-43f3-9d3a-b1c96fe9be06.jfif" alt="Concert 1" loading="lazy">
+      </div>
+      <!-- Photo 2 -->
+      <div class="gallery-item">
+        <img src="404a5862-53d9-44ee-9f52-f3560877caf5.jfif" alt="Photoshoot 1" loading="lazy">
+      </div>
+      <!-- Photo 3 -->
+      <div class="gallery-item">
+        <img src="ea6c5c69-f1fc-4a14-b7e1-421838049c4a.jfif" alt="Fan Meet 1" loading="lazy">
+      </div>
+      <!-- Photo 4 -->
+      <div class="gallery-item">
+        <img src="IMG_20250717_203222.jpg" alt="Concert 2" loading="lazy">
+      </div>
+      <!-- Add more photos as needed -->
+    </div>
+  </div>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" src="">
+  </div>
+</section>
+
+
+
+<!-- Testimonials / Reviews Section -->
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <h2 class="section-title fade-in">Testimonials</h2>
+
+    <div class="testimonial-slider fade-in">
+      <!-- Testimonial 1 -->
+      <div class="testimonial">
+        <p>"Shadab’s performance was absolutely mesmerizing! Truly a gifted vocalist."</p>
+        <h4>- Fan 1</h4>
+        <div class="stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial">
+        <p>"A modern voice with classical depth. A pleasure to listen every time."</p>
+        <h4>- Music Critic</h4>
+        <div class="stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9734;</span>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial">
+        <p>"Incredible energy and stage presence. Shadab connects with the audience like no one else."</p>
+        <h4>- Collaborator</h4>
+        <div class="stars">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+      </div>
+
+      <!-- Add more testimonials as needed -->
+    </div>
+
+    <!-- Slider navigation -->
+    <div class="slider-nav">
+      <button id="test-prev">&#10094;</button>
+      <button id="test-next">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contact / Booking Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <h2 class="section-title fade-in">Contact / Booking</h2>
+
+    <div class="contact-content fade-in">
+      <!-- Contact Form -->
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required class="fade-in-input">
+        <input type="email" name="email" placeholder="Your Email" required class="fade-in-input">
+        <textarea name="message" placeholder="Your Message" required class="fade-in-input"></textarea>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+
+      <!-- Contact Info & Social Links -->
+      <div class="contact-info fade-in">
+        <p>Email: <a href="mailto:info@shadab.com">info@shadab.com</a></p>
+    
+        <div class="social-icons">
+          <a href="https://www.instagram.com/shadaburrehman_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img src="download.png" alt="Instagram"></a>
+          <a href="#" target="_blank"><img src="9267b8300988de07fd0651c6c26ba933-removebg-preview.png" alt="Facebook"></a>
+          <a href="#" target="_blank"><img src="7ddc545046b212d9ecc8eef83569222b-removebg-preview.png" alt="YouTube"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="footer-social">
+      <a href="https://www.instagram.com/shadaburrehman_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img src="download.png" alt="Instagram"></a>
+      <a href="#" target="_blank"><img src="7ddc545046b212d9ecc8eef83569222b-removebg-preview.png" alt="YouTube"></a>
+      <a href="#" target="_blank"><img src="spotify-new-removebg-preview.png" alt="Spotify"></a>
+      <a href="https://www.tiktok.com/@shadaburrehman_?is_from_webapp=1&sender_device=pc" target="_blank"><img src="tiktok-logo-removebg-preview.png" alt="TikTok"></a>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter">
+      <h3>Subscribe to Newsletter</h3>
+      <form id="newsletterForm">
+        <input type="email" placeholder="Your Email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="newsletterMsg" class="newsletter-msg"></p>
+    </div>
+
+    <!-- Copyright -->
+    <p class="copyright">© 2025 Shadab ur Rehman. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('nav ul');
+
+burger.addEventListener('click', () => {
+  nav.classList.toggle('active');
+  burger.classList.toggle('toggle'); // burger cross toggle
+});
+
+</script>
+<script>
+    // Scroll-triggered fade-in
+const faders = document.querySelectorAll('.fade-in');
+
+const appearOptions = {
+  threshold: 0.3,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    appearOnScroll.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+// Counter animation
+const counters = document.querySelectorAll('.count');
+counters.forEach(counter => {
+  counter.innerText = '0';
+  const updateCounter = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / 200; // speed
+    if(count < target){
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCounter, 10);
+    } else {
+      counter.innerText = target;
+    }
+  }
+  updateCounter();
+});
+
+</script>
+<script>
+    // Music slider navigation
+const slider = document.querySelector('.music-slider');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+
+nextBtn.addEventListener('click', () => {
+  slider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+prevBtn.addEventListener('click', () => {
+  slider.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+</script>
+<script>
+    // Video slider navigation
+const videoSlider = document.querySelector('.video-slider');
+const videoPrev = document.getElementById('video-prev');
+const videoNext = document.getElementById('video-next');
+
+videoNext.addEventListener('click', () => {
+  videoSlider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+videoPrev.addEventListener('click', () => {
+  videoSlider.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+// Video filter buttons
+const filterBtns = document.querySelectorAll('.filter-btn');
+const videos = document.querySelectorAll('.video-item');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active from all
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+    videos.forEach(video => {
+      if(filter === 'all' || video.getAttribute('data-category') === filter){
+        video.style.display = 'block';
+      } else {
+        video.style.display = 'none';
+      }
+    });
+  });
+});
+
+</script>
+
+<script>
+    // Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const galleryItems = document.querySelectorAll('.gallery-item img');
+const closeBtn = document.querySelector('.lightbox .close');
+
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    lightbox.style.display = 'block';
+    lightboxImg.src = item.src;
+  });
+});
+
+closeBtn.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox) {
+    lightbox.style.display = 'none';
+  }
+});
+
+// Scroll-triggered fade-in for lazy loading effect
+const fadersGallery = document.querySelectorAll('.fade-in');
+
+const appearOptionsGallery = {
+  threshold: 0.3,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScrollGallery = new IntersectionObserver(function(entries, appearOnScrollGallery) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    appearOnScrollGallery.unobserve(entry.target);
+  });
+}, appearOptionsGallery);
+
+fadersGallery.forEach(fader => {
+  appearOnScrollGallery.observe(fader);
+});
+
+</script>
+<script>
+    // Testimonial slider navigation
+const testSlider = document.querySelector('.testimonial-slider');
+const testPrev = document.getElementById('test-prev');
+const testNext = document.getElementById('test-next');
+
+testNext.addEventListener('click', () => {
+  testSlider.scrollBy({ left: 300, behavior: 'smooth' });
+});
+
+testPrev.addEventListener('click', () => {
+  testSlider.scrollBy({ left: -300, behavior: 'smooth' });
+});
+
+</script>
+
+<script>
+    // Contact form submit animation
+const contactForm = document.getElementById('contactForm');
+const submitBtn = document.querySelector('.btn-submit');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Show success animation
+  submitBtn.classList.add('success');
+  submitBtn.innerText = 'Sent!';
+
+  // Reset after 2s
+  setTimeout(() => {
+    submitBtn.classList.remove('success');
+    submitBtn.innerText = 'Send Message';
+    contactForm.reset();
+  }, 2000);
+});
+
+// Scroll-triggered fade-in for inputs
+const fadersInput = document.querySelectorAll('.fade-in-input');
+
+const appearOptionsInput = {
+  threshold: 0.2,
+  rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScrollInput = new IntersectionObserver(function(entries, appearOnScrollInput) {
+  entries.forEach(entry => {
+    if(!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    appearOnScrollInput.unobserve(entry.target);
+  });
+}, appearOptionsInput);
+
+fadersInput.forEach(fader => appearOnScrollInput.observe(fader));
+
+</script>
+<script>
+    // Newsletter form submission
+const newsletterForm = document.getElementById('newsletterForm');
+const newsletterMsg = document.getElementById('newsletterMsg');
+
+newsletterForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  newsletterMsg.innerText = "Thank you for subscribing!";
+  newsletterForm.reset();
+  setTimeout(() => {
+    newsletterMsg.innerText = "";
+  }, 3000);
+});
+
+</script>
+</body>
+</html>
